@@ -1,5 +1,6 @@
 #! /bin/bash
 
+#setup arguments to variables
 psql_host=$1
 psql_port=$2
 db_name=$3
