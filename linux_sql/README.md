@@ -13,7 +13,7 @@ Linux Cluster Administration (LCA) team. The tools/technologies used:
 - PostgreSQL.
 
 # Quick Start
-###1. Start PostgreSQL instance
+### 1. Start PostgreSQL instance
 The first step to getting the Linux Monitoring Agent up and running is to provision a psql instance 
 using docker. By running `psql_docker.sh` script, the psql container can be created and started.
 ```bash
@@ -23,26 +23,26 @@ using docker. By running `psql_docker.sh` script, the psql container can be crea
 # Start the docker psql container
 ./scripts/psql_docker.sh start
 ```
-###2. Create database tables
+### 2. Create database tables
 In order for the hard specifications and resource usage data to be stored for later analysis, 2 tables 
 must be created in the host_agent database.
 ```bash
 psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
 ```
-###3. Inserting hardware specification data into Database
+### 3. Inserting hardware specification data into Database
 Using the `host_info.sh` script will insert all the hardware specifications obtained 
 from the node/computer into `host_info` table.
 ```bash
 ./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password
 ```
-###4. Inserting hardware usage data into Database
+### 4. Inserting hardware usage data into Database
 Using the `host_usage.sh` script will insert the usage data from the node into 
 the `host_usage` table. This script will be automated to run every minute for realtime 
 data.
 ```bash
 ./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password
 ```
-###5. Setting up Crontab for real-time data
+### 5. Setting up Crontab for real-time data
 Crontab will create a job used to run the `data_usage.sh` script repeatedly every minute for
 continuous data.
 ```bash
