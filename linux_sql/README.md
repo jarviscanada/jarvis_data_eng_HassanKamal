@@ -72,7 +72,7 @@ from each node on the cluster. The data is also inserted into the tables in the 
 - Solve business questions in `queries.sql` from the cluster.
 Discuss how you implement the project.
 ## Architecture
-![my image](./assets/architecture.jpg)
+![my image](./assets/architecture.png)
 
 ## Scripts
 - `psql_docker.sh`: Provision a psql instance using docker
