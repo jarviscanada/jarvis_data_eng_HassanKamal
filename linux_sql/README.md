@@ -2,7 +2,7 @@
 
 # Introduction
 The Linux Cluster Monitoring Agent is used to document the hardware specifications of each node/server 
-in a cluster connected through a switch. It also tracks the resource usage of each node in realtime using tool called 
+in a cluster connected through a network switch. It also tracks the resource usage of each node in realtime using tool called 
 crontab. This data is stored on an RDBMS database, PostgreSQL, for analysis and further study of the cluster by the Jarvis 
 Linux Cluster Administration (LCA) team. The tools/technologies used:
 - Linux Command Line
@@ -20,7 +20,7 @@ using docker. By running `psql_docker.sh` script, the psql container can be crea
 #create the docker container using PostgreSQL image 
 ./scripts/psql_docker.sh create psql_username psql_password
 
-# Start the docker psql container
+#start the docker psql container
 ./scripts/psql_docker.sh start
 ```
 ### 2. Create database tables
@@ -130,7 +130,7 @@ aid in future analysis.
 
 # 2. Calculate the average memory usage in 5 minute intervals.
 
-# 3. Find 
+# 3. Find host failures based of the amount of data they insert in 5 minutes.
 ```
 - `ddl.sql`: Automatically creates two tables called `host_info` and `host_usage` that will store the data in the `host_agent` 
 database.
@@ -149,6 +149,7 @@ psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
 
 ## Database Modeling
 The database used `host_agent` consists of 2 tables called `host_info` and `host_usage`.
+
 `host_info`:
 
 Attribute | Description | Data Type | Constraints 
@@ -163,7 +164,7 @@ Attribute | Description | Data Type | Constraints
 `total_mem` | Total memory on the node in kB | `INT` | `NOT NULL`
 `"timestamp"` | Time when data is retrieved | `TIMESTAMP` | `NOT NULL`
 
-`host_info`:
+`host_usage`:
 
 Attribute | Description | Data Type | Constraints
 ------------ | ------------- | -------- | ------
