@@ -5,12 +5,12 @@ The Linux Cluster Monitoring Agent is used to document the hardware specificatio
 in a cluster connected through a switch. It also tracks the resource usage of each node in realtime using tool called 
 crontab. This data is stored on an RDBMS database, PostgreSQL, for analysis and further study of the cluster by the Jarvis 
 Linux Cluster Administration (LCA) team. The tools/technologies used:
-- Linux Command Line, 
-- Bash Scripts, 
-- Docker, 
-- Github, 
-- IntelliJ 
-- PostgreSQL.
+- Linux Command Line
+- Bash Scripts
+- Docker
+- Github
+- IntelliJ
+- PostgreSQL
 
 # Quick Start
 ### 1. Start PostgreSQL instance
