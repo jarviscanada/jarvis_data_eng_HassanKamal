@@ -29,15 +29,23 @@ WHERE
 GROUP BY
   round5(h_usage.timestamp),
   h_info.id,
-  h_usage.host_id;
+  h_usage.host_id
+ORDER BY
+  host_id,
+  round5(h_usage.timestamp);
 
 -- detect host failure
 SELECT
   h_usage.host_id,
   round5(h_usage.timestamp) AS "timestamp",
-  COUNT(h_usage.timestamp) AS num_data_points
+  COUNT(round5(h_usage.timestamp)) AS num_data_points
 FROM
   host_usage AS h_usage
 GROUP BY
   round5(h_usage.timestamp),
-  h_usage.host_id;
+  h_usage.host_id
+HAVING
+  COUNT(round5(h_usage.timestamp)) < 3
+ORDER BY
+  h_usage.host_id,
+  round5(h_usage.timestamp);
